@@ -15,6 +15,7 @@ GameStates.Preloader.prototype = {
         this.load.image('cannon', "Assets/cannon.png");
         this.load.image('shot', "Assets/shot.png");
         this.load.image('enemy', "Assets/enemy.png");
+        this.load.image('starfield', "Assets/starfield.jpg");
 
     },
 

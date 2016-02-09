@@ -18,15 +18,24 @@ GameStates.Game.prototype = {
 
 
 
+        // background   -----   tilemap will be here
+        starfield = this.add.tileSprite(0, 0, 800, 600, 'starfield');
+
+        // text
+
+        bulletCount = this.add.text(670, 16, "bullets : 30", {
+            font: "20px Arial",
+            fill: "#ffffff"
+
+        });
+
 
         //enable cursor keys
         keys = this.input.keyboard.createCursorKeys();
 
-        // background   -----   tilemap will be here
-        background = this.add.tileSprite(0, 0, 800, 600, 'background');
 
         // player sprite
-        cannon = this.add.sprite(200, 450, 'cannon');
+        cannon = this.add.sprite(375, 450, 'cannon');
 
         // shot sprite
         shot = this.add.group();
@@ -36,7 +45,7 @@ GameStates.Game.prototype = {
         shot.enableBody = true;
 
         //shot modifiers
-        shot.createMultiple(30, 'shot');
+        shot.createMultiple(bulletCounter, 'shot');
         shot.setAll('anchor.x', 0.5);
         shot.setAll('anchor.y', 1);
         shot.setAll('outOfBoundKill', true);
@@ -109,7 +118,7 @@ GameStates.Game.prototype = {
 
 function createEnemy() {
 
-    for (var y = 0; y < 4; y++) {
+    for (var y = 0; y < 3; y++) {
         for (var x = 0; x < 10; x++) {
             var enemys = enemy.create(x * 48, y * 50, 'enemy');
             enemys.anchor.setTo(0.5, 0.5);
@@ -125,7 +134,8 @@ function collisionHandler(enemy, shot) {
 
     shot.kill();
     enemy.kill();
-    console.log("triggerd");
+    bulletCounter++;
+
 }
 
 function fireShot() {
@@ -135,6 +145,15 @@ function fireShot() {
     if (shots) {
         shots.reset(cannon.x + 25, cannon.y);
         shots.body.velocity.y = -300;
+        updateText()
 
     }
+}
+
+function updateText() {
+
+    bulletCounter--;
+
+    bulletCount.setText(" bullets : " + bulletCounter);
+
 }

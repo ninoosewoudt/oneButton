@@ -5,12 +5,8 @@ GameStates.MainMenu = function (game) {
 GameStates.MainMenu.prototype = {
     create: function () {
 
-
-        this.loadingText = this.add.text(this.game.width / 2, this.game.height / 2, "Press DOWN to start", {
-            font: "20px monospace",
-            fill: "#fff"
-        });
-        this.loadingText.anchor.setTo(0.5, 0.5);
+        background = this.add.tileSprite(0, 0, 800, 600, 'background');
+        cannon = this.add.sprite(375, 450, 'cannon');
 
         this.enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
 
