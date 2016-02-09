@@ -11,6 +11,7 @@ var bulletCount;
 var bulletCounter = 30;
 
 
+
 GameStates.Game.prototype = {
 
     create: function () {
@@ -95,7 +96,7 @@ GameStates.Game.prototype = {
         }
 
         this.physics.arcade.overlap(enemy, shot, collisionHandler, null, this);
-
+        updateText()
 
 
 
@@ -145,14 +146,16 @@ function fireShot() {
     if (shots) {
         shots.reset(cannon.x + 25, cannon.y);
         shots.body.velocity.y = -300;
-        updateText()
+
+        bulletCounter--;
+
 
     }
 }
 
 function updateText() {
 
-    bulletCounter--;
+
 
     bulletCount.setText(" bullets : " + bulletCounter);
 
