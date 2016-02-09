@@ -18,7 +18,12 @@ GameStates.Preloader.prototype = {
         this.load.image('starfield', "Assets/starfield.jpg");
         this.load.image('title', "Assets/title.png");
 
+
+        // load all audio
         this.load.audio('menu', ['Assets/menu.wav']);
+        this.load.audio('shot', ['Assets/shot.wav']);
+        this.load.audio('explosion', ['Assets/exploison.mp3']);
+
 
     },
 

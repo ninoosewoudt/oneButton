@@ -24,7 +24,7 @@ GameStates.Game.prototype = {
 
         // text
 
-        bulletCount = this.add.text(670, 16, "bullets : 30", {
+        bulletCount = this.add.text(500, 16, "bullets allowed to miss : 30", {
             font: "20px Arial",
             fill: "#ffffff"
 
@@ -36,8 +36,8 @@ GameStates.Game.prototype = {
 
 
         // player sprite
-        cannon = this.add.sprite(375, 450, 'cannon');
-
+        cannon = this.add.sprite(400, 450, 'cannon');
+        cannon.anchor.setTo(0.5, 0.5);
         // shot sprite
         shot = this.add.group();
 
@@ -79,9 +79,15 @@ GameStates.Game.prototype = {
 
         this.time.events.loop(Phaser.Timer.SECOND, fireShot, this);
 
+        this.add.tween(enemy).to({
+            x: 325
+        }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
+        shotSound = this.add.audio('shot');
+        shotSound.volume = 0.2;
 
-
+        hitSound = this.add.audio('explosion');
+        hitSound.volume = 0.5;
     },
 
     update: function () {
@@ -127,15 +133,21 @@ function createEnemy() {
         }
     }
 
-    enemy.x = 175;
+    enemy.x = 50;
     enemy.y = 100;
+
+
+
+
 }
+
 
 function collisionHandler(enemy, shot) {
 
     shot.kill();
     enemy.kill();
     bulletCounter++;
+    hitSound.play();
 
 }
 
@@ -144,9 +156,9 @@ function fireShot() {
     shots = shot.getFirstExists(false);
 
     if (shots) {
-        shots.reset(cannon.x + 25, cannon.y);
+        shots.reset(cannon.x, cannon.y);
         shots.body.velocity.y = -300;
-
+        shotSound.play();
         bulletCounter--;
 
 
@@ -157,6 +169,6 @@ function updateText() {
 
 
 
-    bulletCount.setText(" bullets : " + bulletCounter);
+    bulletCount.setText(" bullets allowed to miss: " + bulletCounter);
 
 }

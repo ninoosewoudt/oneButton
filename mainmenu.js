@@ -8,10 +8,11 @@ GameStates.MainMenu.prototype = {
     create: function () {
 
         background = this.add.tileSprite(0, 0, 800, 600, 'background');
-        cannon = this.add.sprite(375, 450, 'cannon');
+        cannon = this.add.sprite(400, 450, 'cannon');
         title = this.add.sprite(400, 100, 'title')
 
         title.anchor.set(0.5, 1);
+        cannon.anchor.setTo(0.5, 0.5);
 
         this.add.tween(title.scale).to({
             x: 1.3,
