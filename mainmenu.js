@@ -22,7 +22,7 @@ GameStates.MainMenu.prototype = {
         music = this.add.audio('menu');
         music.play();
 
-        this.enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+        this.enterKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);
 
         this.enterKey.onDown.add(this.playGame, this);
     },

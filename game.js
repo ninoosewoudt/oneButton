@@ -9,6 +9,7 @@ var shot;
 var shotTimeOut = 0;
 var bulletCount;
 var bulletCounter = 30;
+var killsNeeded = 2;
 
 
 
@@ -74,7 +75,7 @@ GameStates.Game.prototype = {
 
 
         // call functions
-
+        console.log(killsNeeded);
         createEnemy();
 
         this.time.events.loop(Phaser.Timer.SECOND, fireShot, this);
@@ -103,6 +104,12 @@ GameStates.Game.prototype = {
 
         this.physics.arcade.overlap(enemy, shot, collisionHandler, null, this);
         updateText()
+
+        if (killsNeeded == 0) {
+            this.state.start('WinScreen');
+            bulletCounter = 30;
+            killsNeeded = 30;
+        }
 
 
 
@@ -144,8 +151,11 @@ function collisionHandler(enemy, shot) {
 
     shot.kill();
     enemy.kill();
+    killsNeeded--;
     bulletCounter++;
     hitSound.play();
+
+
 
 }
 
