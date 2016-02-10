@@ -1,4 +1,4 @@
-GameStates.Game = function (game) {
+GameStates.Level1 = function (game) {
 
 };
 
@@ -9,11 +9,11 @@ var shot;
 var shotTimeOut = 0;
 var bulletCount;
 var bulletCounter = 30;
-var killsNeeded = 2;
+var killsNeeded = 30;
 
 
 
-GameStates.Game.prototype = {
+GameStates.Level1.prototype = {
 
     create: function () {
 

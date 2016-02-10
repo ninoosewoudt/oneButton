@@ -28,6 +28,6 @@ GameStates.MainMenu.prototype = {
     },
     playGame: function () {
         music.stop();
-        this.state.start('Game');
+        this.state.start('Level1');
     }
 };

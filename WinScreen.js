@@ -31,7 +31,7 @@ GameStates.WinScreen.prototype = {
 
     playGame: function () {
 
-        this.state.start('Boot');
+        this.state.start('MainMenu');
     }
 
 
