@@ -107,8 +107,6 @@ GameStates.Game.prototype = {
 
 
 
-
-
     },
 
     render: function () {

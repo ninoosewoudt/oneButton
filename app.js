@@ -7,6 +7,7 @@ window.onload = function () {
     game.state.add('Preloader', GameStates.Preloader);
     game.state.add('MainMenu', GameStates.MainMenu);
     game.state.add('Game', GameStates.Game);
+    game.state.add('WinScreen', GameStates.WinScreen);
 
     //  Now start the Boot state.
     game.state.start('Boot');
