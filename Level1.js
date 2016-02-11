@@ -25,7 +25,7 @@ GameStates.Level1.prototype = {
 
         // text
 
-        bulletCount = this.add.text(500, 16, "bullets allowed to miss : 30", {
+        bulletCount = this.add.text(600, 16, "bullets : 30", {
             font: "20px Arial",
             fill: "#ffffff"
 
@@ -177,6 +177,6 @@ function updateText() {
 
 
 
-    bulletCount.setText(" bullets allowed to miss: " + bulletCounter);
+    bulletCount.setText(" bullets : " + bulletCounter);
 
 }
