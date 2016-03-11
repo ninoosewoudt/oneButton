@@ -1,17 +1,344 @@
-app.js
+ -- app.js --
+
+ bij het laden van de game 
+onload function {
+    voeg de stages van de game toe 
+    
+    boot
+    preloader
+    mainmenu
+    level1
+    level2
+    level3
+    winscherm
+    gameover
+    
+    
+    start de boot gamestate
+
+}
+--------------------------------
 
 
 
-boot.js
+ -- boot.js -- 
+bij het laden van de stage
+preload function {
+    laad de laadbalk in
+
+}
+
+create function {
+start de preloader 
+
+}
+
+----------------------------------
+
+ -- preloader.js --
+ bij het laden van de stage
+ 
+preload function {
+
+regel de loadingbar 
+
+laad alle assets in
+
+laad alle audio in
+}
+
+create function {
+start mainmenu stage
+}
+
+----------------------------------
 
 
-preloader.js
+
+ -- mainmenu.js --
+ var music 
+ 
+ create function {
+ 
+ create alle assets voor mainmenu vanuit de preloader
+ 
+ voeg animatie voor de titel toe 
+ 
+ voeg muziek toe
+ 
+ regel input om de game te starten 
+ 
+ als down gedrukt word doe playgame function
+ 
+ }
+ 
+ playgame function {
+ stop muziek
+ 
+ start level 1 stage 
+ }
+ 
+ ----------------------------------
 
 
-mainmenu.js
+
+-- level1.js -- 
+
+var background;
+var cannon;
+var enemy;
+var shot;
+var shotTimeOut = 0;
+var bulletCount;
+var bulletCounter = 30;
+var killsNeeded = 30;
+
+create function {
+
+create achtergrond vanuit de preloader
+
+add bulletcounter text
+
+voeg input toe 
+
+create player sprite vanuit preloader
+
+create shot sprite vanuit preloader
+
+regel shot physics
+
+regel de components voor shot
+
+create een enemy groep
+
+regel de enemy physics
+
+enable alle physics
+
+roep hier de functions op
+
+regel de fire shot loop 
+
+voeg animatie van enemys toe 
+
+regel audio
+
+}
+
+update function {
+player movement
+
+regel collisions
+
+regel kills needed voor next level
+
+regel bullet counter
+
+}
+
+createEnemy function {
+ for loop voor 3 rijen met elk 10 enemys 
+ 
+ create de enemys en geef ze een x en y
+
+}
+
+collisionHandler function  tussen enemy en shot {
+ kill shot
+ kill enemy 
+ 
+ killsneeded--
+ bulletcounter++
+ 
+ speel hit audio
+
+}
+
+fireshot function {
+pak shot maak het in shots 
+
+reset shots positie 
+geef shots velocity
+speel shot sound 
+
+bulletcounter--
+
+}
+
+updateText function {
+regel hier de text
+}
+
+----------------------------------------------------
+
+ -- level2 -- 
+ 
+ bijna zelfde code als level 1
+ 
+ 
+ 
+ ---------------------------------------------------
+ 
+ -- level3 -- 
+ 
+var background;
+var cannon;
+var enemy;
+var shot;
+var enemyShot;
+var shotTimeOut = 0;
+var bulletCount;
+var bulletCounter = 30;
+var killsNeeded3 = 1;
+var enemyLife = 5;
+var playerLife = 3;
+var hp;
+var bossHp;
 
 
-level1.js
+create function {
+
+create achtergrond vanuit de preloader
+
+add bulletcounter text
+
+add hp text
+
+add boss hp text
+
+voeg input toe 
+
+create player sprite vanuit preloader
+
+create shot sprite vanuit preloader
+create enemyshot sprite vanuit preloader
+
+regel shot physics
+regel enemyshot physics
+
+regel de components voor shot
+regel de components voor enemyshot
+
+create een enemy groep
+
+regel de enemy physics
+
+enable alle physics
+
+roep hier de functions op
+
+regel de fire shot loop 
+regel de enemyshot loop
+
+voeg animatie van enemys toe 
+
+regel audio
+
+}
+
+update function {
+player movement
+
+regel collisions
+
+regel kills needed voor next level
+
+regel bullet counter
+
+regel playerlife
+
+}
+
+createEnemy function {
+ for loop voor 1 rij met 1 boss enemy 
+ 
+ create de enemy en geef het een x en y
+
+}
+
+collisionHandler function  tussen enemy en shot {
+ kill shot
+ kill enemy 
+ 
+ killsneeded--
+ bulletcounter++
+ 
+ speel hit audio
+
+}
+
+collisionHandler function  tussen cannon en enemyshot {
+ kill enemyshot
+ 
+ playerlife -- 
+
+}
+
+fireshot function {
+pak shot maak het in shots 
+
+reset shots positie 
+geef shots velocity
+speel shot sound 
+
+bulletcounter--
+
+}
+
+enemyshot function {
+pak enemyshot maak het in enemyshots 
+
+reset enemyshots positie 
+geef enemyshots velocity
+
+}
 
 
-winscreen.js
+
+updateText function {
+regel hier de text
+}
+
+---------------------------------------
+
+-- winscreen.js -- 
+
+ 
+ create function {
+ 
+ create alle assets voor winscherm vanuit de preloader
+ 
+ voeg animatie voor de titel toe 
+ 
+ regel input om naar mainmenu te gaan 
+ 
+ als down gedrukt word doe playgame function
+ 
+ }
+ 
+ playgame function {
+
+ start mainmenu stage 
+ }
+ 
+ ----------------------------------------
+ 
+-- gameover.js -- 
+
+ 
+ create function {
+ 
+ create alle assets voor gameover vanuit de preloader
+ 
+ voeg animatie voor de titel toe 
+ 
+ regel input om naar mainmenu te gaan 
+ 
+ als down gedrukt word doe playgame function
+ 
+ }
+ 
+ playgame function {
+
+ start mainmenu stage 
+ }

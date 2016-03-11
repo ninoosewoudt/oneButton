@@ -106,7 +106,13 @@ GameStates.Level1.prototype = {
         updateText()
 
         if (killsNeeded == 0) {
-            this.state.start('WinScreen');
+            this.state.start('Level2');
+            bulletCounter = 30;
+            killsNeeded = 30;
+        }
+
+        if (bulletCounter == 0) {
+            this.state.start('GameOver');
             bulletCounter = 30;
             killsNeeded = 30;
         }

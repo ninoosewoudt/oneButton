@@ -10,6 +10,7 @@ window.onload = function () {
     game.state.add('Level2', GameStates.Level2);
     game.state.add('Level3', GameStates.Level3);
     game.state.add('WinScreen', GameStates.WinScreen);
+    game.state.add('GameOver', GameStates.GameOver);
 
 
     //  Now start the Boot state.
